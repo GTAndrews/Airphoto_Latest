@@ -28,7 +28,7 @@ const Header = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/airphoto2020" alt='Reload application' style={{fontWeight: "bold", color: "white"}}><h2>Airphoto Viewer</h2></NavLink>
+              <NavLink href="/airphoto" alt='Reload application' style={{fontWeight: "bold", color: "white"}}><h2>Airphoto Viewer</h2></NavLink>
             </NavItem>
             <InfoModal></InfoModal>
           </Nav>
