@@ -31,7 +31,7 @@
     "jquery": "^3.5.1",
     "lint-staged": "^10.4.0",
     "maquette": "^3.3.7",
-    "mssql": "^6.3.1",
+    "mssql": "^6.3.2",
     "node-sass": "^4.14.1",
     "popper.js": "^1.16.1",
     "prettier": "^1.19.1",

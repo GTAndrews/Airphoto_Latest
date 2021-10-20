@@ -12,3 +12,24 @@ app.get('/', async (req, res, next) => {
 });
 
 app.listen(5000, () => {console.log('Server is running..')});
+
+/* var sql = require("mssql");
+
+var config = {
+  user: 'downloader',
+  password: 'password',
+  server: 'MERCATOR\\SQLEXPRESS2014,45000',
+  database: 'AirphotoStats'
+};
+
+sql.connect(config, function (err) {
+  if (err) console.log(err);
+
+  var request = new sql.Request();
+
+  request.query('query', function (err, recordset) {
+    if (err) console.log(err)
+
+    res.send(recordset);
+  });
+}); */
