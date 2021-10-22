@@ -92,3 +92,6 @@ ol {
   border-radius: 2px;
   cursor: pointer;
 }
+
+// Remove the blue outline around the MapView
+.esri-view .esri-view-surface--inset-outline:focus::after {  outline: none !important;}
