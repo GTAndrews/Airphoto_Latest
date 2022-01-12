@@ -303,7 +303,7 @@ export default class App extends Component {
               if (info) {
                 // *** Check if the year is under copyright and redirect to secure app if it is ***
                 // Remove this check for Secure App
-                if (year > 1971) {
+                if (year > 1972) {
                   // *** Get a Modal popup for messages going to display these warnings ***
                   console.log("Download not active on Public Application. Log In to download...");
                 } else {
@@ -347,28 +347,32 @@ export default class App extends Component {
               var mnrfService = "MNR_Ref/ImageServer";
               console.log(year);
               console.log(Collection);
-              if (Collection === "NAPL") {
-                serviceURL = serviceURL + yearStr + naplService;
-              } else if (Collection === "MNRF") {
-                serviceURL = serviceURL + yearStr + mnrfService;
-              };
-              var defExp = "OBJECTID = " + String(photoID);
-              if (year > 1971) {
-                // Insert Error or disable View button
-                console.log("Viewing is not active for this photo.")
+              if (info) {
+                if (Collection === "NAPL") {
+                  serviceURL = serviceURL + yearStr + naplService;
+                } else if (Collection === "MNRF") {
+                  serviceURL = serviceURL + yearStr + mnrfService;
+                };
+                var defExp = "OBJECTID = " + String(photoID);
+                if (year > 1972) {
+                  // Insert Error or disable View button
+                  console.log("Viewing is not active for this photo.")
+                } else {
+                  console.log(serviceURL)
+                  const photoView = new ImageryLayer({
+                    url:
+                      serviceURL,
+                      definitionExpression: defExp,
+                      title: yearStr + ": " + photoName
+                  });
+                  map.add(photoView, 0); // Add photos with unique names derived from PHOTOID attribute
+                  map.reorder(photoView, 1);
+                  photoView.load().then(function(){
+                    console.log(photoName + " added to map successfully.");
+                  });
+                }
               } else {
-                console.log(serviceURL)
-                const photoView = new ImageryLayer({
-                  url:
-                    serviceURL,
-                    definitionExpression: defExp,
-                    title: yearStr + ": " + photoName
-                });
-                map.add(photoView, 0); // Add photos with unique names derived from PHOTOID attribute
-                map.reorder(photoView, 1);
-                photoView.load().then(function(){
-                  console.log(photoName + " added to map successfully.");
-                });
+                console.log("Photo not available for viewing, sorry.")
               }
             }
           });
