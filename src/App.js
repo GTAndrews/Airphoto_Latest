@@ -271,7 +271,7 @@ export default class App extends Component {
                 console.log(graphic.attributes.DownloadURL)
                 console.log(graphic.attributes.PHOTOID + " viewing status: " + graphic.attributes.ViewURL)
                 // *** THIS WASN'T WORKING FOR SELECTIONS WITH MULTIPLE PHOTOS IN A SINGLE POPUP ***
-                //graphicTemplate.actions.items[0].disabled = graphic.attributes.ViewURL ? false : true;
+                graphicTemplate.actions.items[0].disabled = graphic.attributes.DownloadURL ? false : true;
                 graphicTemplate.actions.items[1].disabled = graphic.attributes.DownloadURL ? false : true;
                 // Set default icon for the Download Action
                 graphicTemplate.actions.items[1].className = "esri-icon-download";
@@ -291,14 +291,14 @@ export default class App extends Component {
             var yearStr = attributes.Year_;  // Year in a String format
             var year = parseInt(yearStr);
             var yearDiff = currYear - year;
+            // DownloadURL is no longer hard coded but this field acts as a flag for the ability to download
+            var info = attributes.DownloadURL;  // *** Convert this field to a binary ***
             console.log("Photo age: " + yearDiff);
             var Collection = attributes.Collection;  // Either NAPL or MNRF
             // --- Download photo operation to hit the Download URL ---
             if (event.action.id === "download-photo") {
               event.action.className = "None";
               event.action.image = gear; // Set a "thinking" type icon
-              // DownloadURL is no longer hard coded but this field acts as a flag for the ability to download
-              var info = attributes.DownloadURL;  // *** Convert this field to a binary ***
               // Make sure the 'Download URL' field value is not null
               if (info) {
                 // *** Check if the year is under copyright and redirect to secure app if it is ***
