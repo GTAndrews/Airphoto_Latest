@@ -354,7 +354,7 @@ export default class App extends Component {
                   serviceURL = serviceURL + yearStr + mnrfService;
                 };
                 var defExp = "OBJECTID = " + String(photoID);
-                if (year > 1972) {
+                if (yearDiff > 51) {
                   // Insert Error or disable View button
                   console.log("Viewing is not active for this photo.")
                 } else {
