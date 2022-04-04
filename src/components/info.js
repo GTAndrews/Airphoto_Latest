@@ -7,8 +7,6 @@ import Citation from 'components/pages/citation';
 import Contact from 'components/pages/contact';
 import Breadcrumb from 'components/Breadcrumb';
 import logo from'images/TU_Library & Archives logo condensed.svg';
-import NavbarText from 'reactstrap/lib/NavbarText';
-
 
 const InfoModal = (props) => {
 
@@ -28,7 +26,7 @@ const InfoModal = (props) => {
       <Button href='#' onClick={modaltoggle} style={{right: "250pt", position: "absolute", top: "50%", transform: "translateY(-50%)"}}>
         <h4>App Info</h4>
       </Button>
-      <Button href="https://madgic-trentu-ca.proxy1.lib.trentu.ca/airphoto_secure/" target='_blank' rel='noopener noreferrer' style={{right: "130pt", position: "absolute", top: "50%", transform: "translateY(-50%)"}}><h4>Trent Login</h4></Button>
+      <Button href="https://madgic-trentu-ca.proxy1.lib.trentu.ca/airphoto_secure/" target='_blank' rel='noopener noreferrer' style={{right: "135pt", position: "absolute", top: "50%", transform: "translateY(-50%)"}}><h4>Trent Login</h4></Button>
       <NavLink href= "https://www.trentu.ca/library/frontpage" target='_blank' rel='noopener noreferrer' style={{right: "1%", position: "absolute", top: "50%", transform: "translateY(-50%)"}}>
         <img src={logo} alt='Trent University Crest, reload application' height="55"/>
       </NavLink>

@@ -1,5 +1,4 @@
-import React, { Component, useEffect } from 'react';
-import Modal from 'reactstrap';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@esri/calcite-components';
 import { loadReCaptcha } from 'react-recaptcha-v3';
@@ -24,7 +23,6 @@ console.log(Header); // should be included in Modal popup
 export default class App extends Component {
 
   componentDidMount = () => {
-    //loadReCaptcha('6Lcg4s4ZAAAAAB-TWHuox2PbiRAdV-ynnZLXyq4l') // localhost dev reCAPTCHA
     loadReCaptcha('6LfAU7wUAAAAAHvGI0EUUruTd5AXr282zg6EXZdS') // MaDGIC reCAPTCHA
     // Set up ArcGIS Javascript Application components
     loadModules([
@@ -354,7 +352,7 @@ export default class App extends Component {
                   serviceURL = serviceURL + yearStr + mnrfService;
                 };
                 var defExp = "OBJECTID = " + String(photoID);
-                if (yearDiff > 51) {
+                if (yearDiff < 51) {
                   // Insert Error or disable View button
                   console.log("Viewing is not active for this photo.")
                 } else {
@@ -605,66 +603,3 @@ export default class App extends Component {
     );
   }
 }
-
-
-// logo: <img src={logo} alt="Trent University Library & Archives" /> 
-
-/*** QUERY TASK ***/
-/*var qTask = new QueryTask({
-  url: photoLayer
-});
-var params = new Query({
-  returnGeometry: true,
-  outFields: ["*"]
-});
-
-view.when(funciton() {
-  view.ui.add("optionsDiv", "bottom-right");
-  document.getElementById("doBtn").addEventListener("click", doQuery);
-});
-var yearSel = document.getElementById("yearSelection");
-var rollSel = document.getElementById("rollSelection");
-var photoSel =document.getElementById("photoSelection");
-
-function doQuery() {
-  resultsLayer.removeAll();
-  params.where = yearSelection.value + rollSelection.value + photoSelection.value;
-  qTask.execute(params).then(getResults).catch(promiseRejected);
-}
-
-function getResults(response) {
-  var photoResults = response.features.map(function (feature) {
-    feture.symbol = {
-      type: "point",
-      symbolLayers: [
-        {
-          ***Define 2D symbol for results***
-        }
-      ]
-    };
-    feture.popupTemplate = popupTemplate;
-    return feature;
-  });
-  resultsLayer.addMany(photoResults);
-  view
-    .goTo(photoResults)
-    .then(funtion () {
-      view.popup.open({
-        features: photoResults,
-        featureMenuOpen: true,
-        updateLocationEnabled: true
-      });
-    })
-    .catch(feature (error) {
-      if (error.name != "AbortError") {
-        console.error(error);
-      }
-    });
-  document.getElementById("printResults").innerHTML =
-    photoResults.length + " results found!";
-}
-
-funtion promiseRejected(error) {
-  console.error("Promise rejected: ", error.message);
-}
-*/
